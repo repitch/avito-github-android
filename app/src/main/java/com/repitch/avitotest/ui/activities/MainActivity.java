@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         }
 
-        boolean noRes = objects == null || objects.isEmpty();
+        boolean noRes = objects.isEmpty();
         ((ReposUsersAdapter) mRvRepos.getAdapter()).swap(objects);
         mRvRepos.scrollToPosition(0);
         mWrapPlaceholder.setVisibility(!noRes ? View.GONE : View.VISIBLE);
@@ -152,7 +152,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         if (query == null || query.isEmpty()) {
-            setRepos(null);
+            setRepos(new ArrayList<GitHubRepo>());
+            setUsers(new ArrayList<GitHubUser>());
             return;
         }
 
